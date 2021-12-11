@@ -23,28 +23,4 @@
         </createTable>
     </changeSet>
 
-    <!--add column mobile if not exists-->
-    <changeSet author="teranga" id="1639221480671-1">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists tableName="users" columnName="mobile"/>
-            </not>
-        </preConditions>
-        <addColumn schemaName="sample_liquidbase" tableName="users">
-            <column name="mobile" type="VARCHAR(255)"/>
-        </addColumn>
-    </changeSet>
-
-    <!--add column address if not exists-->
-    <changeSet author="teranga" id="1639221480672-1">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists tableName="users" columnName="address"/>
-            </not>
-        </preConditions>
-        <addColumn schemaName="sample_liquidbase" tableName="users">
-            <column name="address" type="VARCHAR(255)"/>
-        </addColumn>
-    </changeSet>
-
 </databaseChangeLog>
