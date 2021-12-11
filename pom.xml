@@ -15,8 +15,10 @@
     <description>Sample project for testing Liquibase on Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <liquibase.propertyFile>${project.basedir}/src/main/resources/liquibase/liquibase.properties
+        <liquibase.propertyFile>
+            ${project.basedir}/src/main/resources/liquibase/liquibase.properties
         </liquibase.propertyFile>
+        <liquibase.context>dev</liquibase.context>
     </properties>
     <dependencies>
         <dependency>
@@ -74,6 +76,7 @@
                     <version>4.6.1</version>
                     <configuration>
                         <propertyFile>${liquibase.propertyFile}</propertyFile>
+                        <contexts>${liquibase.context}</contexts>
                     </configuration>
                     <dependencies>
                         <dependency>

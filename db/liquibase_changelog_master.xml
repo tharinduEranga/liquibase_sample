@@ -3,14 +3,17 @@
                    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <property name="env" value="dev"/>
+
     <preConditions>
         <dbms type="mysql"/>
         <runningAs username="root"/>
     </preConditions>
 
     <!--include users schema changelogs-->
-    <include file="db/users/users_changelog_initial.xml"/>
-    <include file="db/users/users_changelog_new_column_address.xml"/>
-    <include file="db/users/users_changelog_new_column_mobile.xml"/>
+    <include file="db/users/users_changelog_initial.xml" context="${env}"/>
+    <include file="db/users/users_changelog_new_column_address.xml" context="${env}"/>
+    <include file="db/users/users_changelog_new_column_mobile.xml" context="${env}"/>
 
 </databaseChangeLog>
