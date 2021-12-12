@@ -28,7 +28,7 @@ class LiquidbaseSampleApplicationTests {
     public void testAddUser() {
         User user = new User(1, "Tharindu", "0776288969", "Bentota");
         userRepository.add(user);
-        verify(userRepository, times(1)).add(user);
+        verify(userMapper, times(1)).save(user);
     }
 
 }

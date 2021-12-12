@@ -15,11 +15,8 @@
     <description>Sample project for testing Liquibase on Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
-        <liquibase.propertyFile>
-            ${project.basedir}/src/main/resources/liquibase/liquibase.properties
-        </liquibase.propertyFile>
-        <liquibase.context>dev</liquibase.context>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,21 +75,7 @@
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
                     <version>4.6.1</version>
-                    <configuration>
-                        <propertyFile>${liquibase.propertyFile}</propertyFile>
-                        <contexts>${liquibase.context}</contexts>
-                    </configuration>
                     <dependencies>
-                        <dependency>
-                            <groupId>com.h2database</groupId>
-                            <artifactId>h2</artifactId>
-                            <version>1.4.200</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.hibernate</groupId>
-                            <artifactId>hibernate-core</artifactId>
-                            <version>5.4.6.Final</version>
-                        </dependency>
                         <dependency>
                             <groupId>javax.xml.bind</groupId>
                             <artifactId>jaxb-api</artifactId>

@@ -12,8 +12,8 @@
     </preConditions>
 
     <!--include users schema changelogs-->
-    <include file="db/users/users_changelog_initial.xml" context="${env}"/>
-    <include file="db/users/users_changelog_new_column_address.xml" context="${env}"/>
-    <include file="db/users/users_changelog_new_column_mobile.xml" context="${env}"/>
+    <include file="classpath:db/changelog/users/users_changelog_initial.xml" context="${env}"/>
+    <include file="classpath:db/changelog/users/users_changelog_new_column_address.xml" context="${env}"/>
+    <include file="classpath:db/changelog/users/users_changelog_new_column_mobile.xml" context="${env}"/>
 
 </databaseChangeLog>
