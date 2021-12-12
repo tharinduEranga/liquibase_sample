@@ -14,5 +14,5 @@ public interface UserMapper {
 
     List<User> findByName(@Param("name") String name);
 
-    int delete(@Param("id") int id);
+    void delete(@Param("id") int id);
 }

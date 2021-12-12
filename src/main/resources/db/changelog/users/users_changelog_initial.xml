@@ -15,7 +15,7 @@
                 <tableExists tableName="users"/>
             </not>
         </preConditions>
-        <createTable tableName="users">
+        <createTable tableName="user">
             <column autoIncrement="true" name="id" type="INT">
                 <constraints primaryKey="true"/>
             </column>

@@ -8,10 +8,10 @@
     <changeSet author="teranga" id="1639221480671-1">
         <preConditions onFail="MARK_RAN">
             <not>
-                <columnExists tableName="users" columnName="mobile"/>
+                <columnExists tableName="user" columnName="mobile"/>
             </not>
         </preConditions>
-        <addColumn schemaName="sample_liquidbase" tableName="users">
+        <addColumn schemaName="sample_liquidbase" tableName="user">
             <column name="mobile" type="VARCHAR(255)"/>
         </addColumn>
     </changeSet>
