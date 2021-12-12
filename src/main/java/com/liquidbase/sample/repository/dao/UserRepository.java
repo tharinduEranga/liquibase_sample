@@ -1,18 +1,24 @@
-package com.liquidbase.sample.repository;
+package com.liquidbase.sample.repository.dao;
 
 import com.liquidbase.sample.entity.User;
+import com.liquidbase.sample.repository.BaseDao;
 import com.liquidbase.sample.repository.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-@Slf4j
 @RequiredArgsConstructor
+@Slf4j
 @Repository
 public class UserRepository {
+
+    private static final String MAPPER_CLASS = "com.liquidbase.sample.repository.mapper.UserMapper.";
+
     private final UserMapper userMapper;
+    private final BaseDao baseDao;
 
     public Integer add(User user) {
         return userMapper.save(user);
@@ -22,8 +28,9 @@ public class UserRepository {
         userMapper.save(user);
     }
 
-    public User findById(int id) {
-        return userMapper.findById(id);
+    public Mono<User> findById(int id) {
+        return baseDao.apply((session) ->
+                session.selectOne(MAPPER_CLASS + "findById", id));
     }
 
     public List<User> findByName(String name) {

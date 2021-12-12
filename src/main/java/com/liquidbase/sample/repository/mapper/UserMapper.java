@@ -3,6 +3,7 @@ package com.liquidbase.sample.repository.mapper;
 import com.liquidbase.sample.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 public interface UserMapper {
     int save(@Param("user") User user);
 
-    User findById(int id);
+    Mono<User> findById(int id);
 
     List<User> findByName(@Param("name") String name);
 
