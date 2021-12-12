@@ -4,10 +4,8 @@ import com.liquidbase.sample.entity.User;
 import com.liquidbase.sample.repository.dao.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -18,8 +16,15 @@ public class UserController {
 
     private final UserRepository userRepository;
 
+    @GetMapping("")
+    private Flux<User> getUsersByName(@RequestParam(name = "name") String name) {
+        log.info("Thread: {}", Thread.currentThread().getId());
+        return userRepository.findByName(name);
+    }
+
     @GetMapping("/{id}")
-    private Mono<User> getEmployeeById(@PathVariable Integer id) {
+    private Mono<User> getUserById(@PathVariable Integer id) {
+        log.info("Thread: {}", Thread.currentThread().getId());
         return userRepository.findById(id);
     }
 

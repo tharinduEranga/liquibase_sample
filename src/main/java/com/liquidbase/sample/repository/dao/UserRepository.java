@@ -6,9 +6,8 @@ import com.liquidbase.sample.repository.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -33,11 +32,13 @@ public class UserRepository {
                 session.selectOne(MAPPER_CLASS + "findById", id));
     }
 
-    public List<User> findByName(String name) {
-        return userMapper.findByName(name);
+    public Flux<User> findByName(String name) {
+        return baseDao.applyList((session) ->
+                session.selectList(MAPPER_CLASS + "findByName", name));
     }
 
     public void delete(int id) {
         userMapper.delete(id);
     }
+
 }
