@@ -11,7 +11,7 @@
                 <columnExists tableName="user" columnName="address"/>
             </not>
         </preConditions>
-        <addColumn schemaName="sample_liquidbase" tableName="user">
+        <addColumn schemaName="free_db_for_me" tableName="user">
             <column name="address" type="VARCHAR(255)"/>
         </addColumn>
     </changeSet>
