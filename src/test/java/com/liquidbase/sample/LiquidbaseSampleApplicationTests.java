@@ -6,7 +6,10 @@ import com.liquidbase.sample.repository.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -21,6 +24,10 @@ class LiquidbaseSampleApplicationTests {
     @Mock
     private UserMapper userMapper;
 
+
+    @Autowired
+    private JavaMailSender javaMailSender;
+
     @Test
     void contextLoads() {
     }
@@ -30,6 +37,17 @@ class LiquidbaseSampleApplicationTests {
         User user = new User(1, "Tharindu", "0776288969", "Bentota");
         Integer id = userRepository.add(user);
         verify(userMapper, times(1)).save(user);
+    }
+
+    @Test
+    public void sendEmail() {
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo("tharindueranga3@gmail.com");
+
+        msg.setSubject("Testing from Spring Boot");
+        msg.setText("Hello World \n Spring Boot Email");
+
+        javaMailSender.send(msg);
     }
 
     @Test
